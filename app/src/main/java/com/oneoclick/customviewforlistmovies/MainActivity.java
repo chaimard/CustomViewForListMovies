@@ -6,7 +6,10 @@ package com.oneoclick.customviewforlistmovies;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,9 +24,20 @@ public class MainActivity extends AppCompatActivity {
         matchingView();
         createAdapter();
         setMyAdapter();
+        setOnClick();
 
 
     }//void
+
+    private void setOnClick() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getApplicationContext(),"เลือก "+position,Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
 
     private void setMyAdapter() {
         listView.setAdapter(adapter);
